@@ -27,17 +27,22 @@ function f() {
 		for (let x = 0; x < w; ++x) {
 			let xr = x / w;
 			let yr = y / h;
-			let a = 1 - worley.getEuclidean({x: xr, y: yr}, 1);
-			let b = sumOctaves(x, y, 6, .5, scale, 0, 1);
-			let v = (a * 2) * b - .5;
 			let d = 1.125;
 			let f = (1 - xr * xr + xr - d) + (1 - yr * yr + yr - d);
 			f *= 7.5;
 			f = f < 0 ? 0 : f;
-			v *= f;
-			v *= 255;
+			let v = 0;
+
+			if (f > 0) {
+				let a = 1 - worley.getEuclidean({x: xr, y: yr}, 1);
+				let b = sumOctaves(x, y, 6, .5, scale, 0, 1);
+				v = (a * 2) * b - .5;
+			}
+
+			v = v * f * 255;
+			v = v - (255 * .6);
 			let p = (y * w + x) * 4;
-			buffer[p] = v;
+			buffer[p  ] = v;
 			buffer[p+1] = v;
 			buffer[p+2] = v;
 			buffer[p+3] = 255;
