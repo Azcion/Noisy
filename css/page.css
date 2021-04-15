@@ -4,8 +4,10 @@ body {
 	background-repeat: no-repeat !important;
 }
 
-button {
-	width: 20px;
-	height: 20px;
-	background-color: gray;
+#reload {
+	max-width: 100px;
+}
+
+path {
+	stroke: white;
 }
