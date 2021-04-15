@@ -1,0 +1,11 @@
+body {
+	background-color: black;
+	background-position: center !important;
+	background-repeat: no-repeat !important;
+}
+
+button {
+	width: 20px;
+	height: 20px;
+	background-color: gray;
+}
