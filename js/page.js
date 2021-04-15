@@ -14,6 +14,12 @@ function f() {
 	worley = new WorleyNoise({numPoints: 10, seed: seed});
 	let w = window.innerWidth - 50;
 	let h = window.innerHeight - 35;
+
+	if (w < h) {
+		h = w;
+	} else {
+		w = h;
+	}
 	let buffer = new Uint8ClampedArray(w * h * 4);
 	let scale = 0.005;
 
